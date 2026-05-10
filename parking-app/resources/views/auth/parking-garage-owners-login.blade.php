@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('parking-garage-owners.blade-login') }}">
+    <form method="POST" action="{{ route('parking-garage-owners-login') }}">
         @csrf
 
         <!-- Email Address -->

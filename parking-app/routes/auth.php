@@ -14,28 +14,29 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    // Route::get('parking-garage-owners-register', [ParkingGarageOwnerRegisteredUserController::class, 'create'])
-    //     ->name('parking-garage-owners-register');
+    
+    Route::get('parking-garage-owners-register', [ParkingGarageOwnerRegisteredUserController::class, 'create'])
+        ->name('parking-garage-owners-register');
 
-    // Route::post('parking-garage-owners-register', [ParkingGarageOwnerRegisteredUserController::class, 'store']);
+    Route::post('parking-garage-owners-register', [ParkingGarageOwnerRegisteredUserController::class, 'store']);
 
-    // Route::get('parking-garage-owners-login', [ParkingGarageOwnerAuthenticatedSessionController::class, 'create'])
-    //     ->name('parking-garage-owners-login');
+    Route::get('parking-garage-owners-login', [ParkingGarageOwnerAuthenticatedSessionController::class, 'create'])
+        ->name('parking-garage-owners-login');
 
-    // Route::post('parking-garage-owners-login', [ParkingGarageOwnerAuthenticatedSessionController::class, 'store']);
-
-
+    Route::post('parking-garage-owners-login', [ParkingGarageOwnerAuthenticatedSessionController::class, 'store']);
 
 
-    // Route::get('drivers-register', [RegisteredUserController::class, 'create'])
-    //     ->name('drivers-register');
 
-    // Route::post('drivers-register', [RegisteredUserController::class, 'store']);
 
-    // Route::get('drivers-login', [AuthenticatedSessionController::class, 'create'])
-    //     ->name('drivers-login');
+    Route::get('drivers-register', [RegisteredUserController::class, 'create'])
+        ->name('drivers-register');
 
-    // Route::post('drivers-login', [AuthenticatedSessionController::class, 'store']);
+    Route::post('drivers-register', [RegisteredUserController::class, 'store']);
+
+    Route::get('drivers-login', [AuthenticatedSessionController::class, 'create'])
+        ->name('drivers-login');
+
+    Route::post('drivers-login', [AuthenticatedSessionController::class, 'store']);
 
 
 
@@ -97,6 +98,8 @@ Route::middleware('auth')->group(function () {
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
+    //The 'destroy' method of the AuthenticatedSessionController::class was specifically modified
+    //to apply to both of the seperate user groups 'users' and 'parking_garage_owners'
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });

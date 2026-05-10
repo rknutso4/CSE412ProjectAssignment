@@ -16,7 +16,7 @@ class ParkingGarageOwnerAuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('auth.parking-garage-owners-login');
     }
 
     /**
@@ -26,9 +26,9 @@ class ParkingGarageOwnerAuthenticatedSessionController extends Controller
     {   
         if (Auth::guard('parking_garage_owner')->attempt($request->only('email', 'password'), $request->boolean('remember'))) {
                 $request->session()->regenerate();
-                return redirect()->intended(route('dashboard', absolute: false));
+                return redirect()->intended(route('parking-garage-owners-dashboard', absolute: false));
             }
-        return redirect()->intended('parkingGarageOwner.dashboard');
+        return redirect()->intended('parking-garage-owners-dashboard');
     }
 
     /**
